@@ -4,3 +4,9 @@ C:\Users\Simon\Documents\GitHub\Services\WcfServiceCore\WcfServiceCore\bin\WcfSe
 C:\Users\Simon\Documents\GitHub\Services\WcfServiceCore\WcfServiceCore\obj\Debug\WcfServiceCore.csprojResolveAssemblyReference.cache
 C:\Users\Simon\Documents\GitHub\Services\WcfServiceCore\WcfServiceCore\obj\Debug\WcfServiceCore.dll
 C:\Users\Simon\Documents\GitHub\Services\WcfServiceCore\WcfServiceCore\obj\Debug\WcfServiceCore.pdb
+C:\Users\Simon\Documents\GitHub\Messenger\WcfServiceCore\WcfServiceCore\bin\WcfServiceCore.dll.config
+C:\Users\Simon\Documents\GitHub\Messenger\WcfServiceCore\WcfServiceCore\bin\WcfServiceCore.dll
+C:\Users\Simon\Documents\GitHub\Messenger\WcfServiceCore\WcfServiceCore\bin\WcfServiceCore.pdb
+C:\Users\Simon\Documents\GitHub\Messenger\WcfServiceCore\WcfServiceCore\obj\Debug\WcfServiceCore.csprojResolveAssemblyReference.cache
+C:\Users\Simon\Documents\GitHub\Messenger\WcfServiceCore\WcfServiceCore\obj\Debug\WcfServiceCore.dll
+C:\Users\Simon\Documents\GitHub\Messenger\WcfServiceCore\WcfServiceCore\obj\Debug\WcfServiceCore.pdb
