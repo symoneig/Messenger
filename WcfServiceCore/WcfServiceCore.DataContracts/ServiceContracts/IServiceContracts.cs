@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
-using WcfServiceCore.DataContracts;
+using WcfServiceCore.DataContracts.DataContracts;
 
-namespace WcfServiceCore
+namespace WcfServiceCore.DataContracts.ServiceContracts
 {
     [ServiceContract]
     public interface IServiceContracts
@@ -17,8 +12,5 @@ namespace WcfServiceCore
 
         [OperationContract]
         UserData GetUserData(string userName);
-
-        [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
     }
 }
