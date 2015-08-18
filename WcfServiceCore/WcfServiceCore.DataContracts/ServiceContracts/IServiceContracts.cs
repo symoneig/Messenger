@@ -4,7 +4,7 @@ using WcfServiceCore.DataContracts.DataContracts;
 
 namespace WcfServiceCore.DataContracts.ServiceContracts
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(IServiceContractsCallback))]
     public interface IServiceContracts
     {
         [OperationContract]
@@ -12,5 +12,11 @@ namespace WcfServiceCore.DataContracts.ServiceContracts
 
         [OperationContract]
         UserData GetUserData(string userName);
+
+        [OperationContract]
+        void SendMessage(string senderUserName, string receiverUserName, string message);
+
+        [OperationContract]
+        void GeristerUserCallback(string userName);
     }
 }
