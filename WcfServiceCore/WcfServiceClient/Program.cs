@@ -3,39 +3,24 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
+using WcfConsoleClient.ServiceContracts;
 using WcfServiceCore.DataContracts.ServiceContracts;
 
 namespace WcfConsoleClient
 {
-    public class ServiceContractClient : DuplexClientBase<IServiceContracts>
-    {
-        public ServiceContractClient(object callbackInstance, Binding binding, EndpointAddress remoteAddress)
-            : base(callbackInstance, binding, remoteAddress) { }
-    }
-
-    public class ServiceCallbackClient : IServiceContractsCallback
-    {
-        public void OnCallback(string userName, string message)
-        {
-            Console.WriteLine("Received message from {0}: {1}", userName, message);
-        }
-    }
-
     public class Program
     {
+        public static IServiceContracts Service = ServiceContractClient.Instance.ChannelFactory.CreateChannel();
+
+        private static ActionEnum ProcessUserInput(string input)
+        {
+            int result;
+
+            return int.TryParse(input, out result) ? (ActionEnum)result : ActionEnum.None;
+        }
+
         private static void Main(string[] args)
         {
-            var tcpUri = new Uri("http://localhost:3370/Service.svc");
-            //var address = new EndpointAddress(tcpUri);
-            //var binding = new BasicHttpBinding();
-            var binding  = new WSDualHttpBinding();
-
-            var callback = new ServiceCallbackClient();
-            var client = new ServiceContractClient(callback, binding, new EndpointAddress(tcpUri));
-
-            //var factory = new ChannelFactory<IServiceContracts>(binding, address);
-            var service = client.ChannelFactory.CreateChannel();
-
             var quite = false;
             string currentUser = null;
 
@@ -43,12 +28,18 @@ namespace WcfConsoleClient
             {
                 try
                 {
-                    switch (Console.ReadLine().ToUpper())
+                    switch (ProcessUserInput(Console.ReadLine()))
                     {
+                        case ActionEnum.Register:
+                            break;
+                        
+                        case ActionEnum.SignIn:
+                            break;
+
                         case "0":
                             Console.WriteLine("Enter user name:");
-                            var user = service.GetUserData(Console.ReadLine());
-                            service.GeristerUserCallback(user.UserName);
+                            var user = Service.GetUserData(Console.ReadLine());
+                            Service.TrySignIn(user.UserName);
 
                             if (user != null)
                             {
@@ -79,13 +70,13 @@ namespace WcfConsoleClient
                             Console.Write("Email: ");
                             var email = Console.ReadLine();
 
-                            service.SetUserData(userName, firstName, lastName, new DateTime(), email);
+                            Service.SetUserData(userName, firstName, lastName, new DateTime(), email);
                             break;
 
                         case "2":
 
                             Console.WriteLine("Enter User Name: ");
-                            var result = service.GetUserData(Console.ReadLine());
+                            var result = Service.GetUserData(Console.ReadLine());
 
                             if (result != null)
                             {
@@ -107,7 +98,7 @@ namespace WcfConsoleClient
                             Console.WriteLine("Enter text message: ");
                             var message = Console.ReadLine();
 
-                            service.SendMessage(currentUser, sendTo, message);
+                            Service.SendMessage(currentUser, sendTo, message);
                             break;
                         case "Q":
                             quite = true;

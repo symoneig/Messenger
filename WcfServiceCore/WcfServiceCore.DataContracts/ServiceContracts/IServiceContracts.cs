@@ -8,6 +8,9 @@ namespace WcfServiceCore.DataContracts.ServiceContracts
     public interface IServiceContracts
     {
         [OperationContract]
+        bool UserExists(string userName);
+
+        [OperationContract]
         string SetUserData(string userName, string firstName, string lastName, DateTime birthDate, string email);
 
         [OperationContract]
@@ -17,6 +20,9 @@ namespace WcfServiceCore.DataContracts.ServiceContracts
         void SendMessage(string senderUserName, string receiverUserName, string message);
 
         [OperationContract]
-        void GeristerUserCallback(string userName);
+        bool TrySignIn(string userName, string password);
+
+        [OperationContract]
+        bool ValidateAddress(string emailAddress);
     }
 }
