@@ -1,3 +1,4 @@
+--Test script
 USE [master]
 GO
 /****** Object:  Database [messenger]    Script Date: 24.08.2015 23:18:52 ******/
